@@ -70,7 +70,7 @@ async function call() {
   pc2.addEventListener('track', gotRemoteStream);
 
   //当ice准备好后，加到目标源中
-  pc2.addEventListener('icecandidate', e => onIceCandidate(pc1, e));
+  //pc2.addEventListener('icecandidate', e => onIceCandidate(pc1, e));
   
   
 
@@ -86,8 +86,8 @@ async function call() {
 
 	//创建和设置连接描述
     const desc_pc1 = await pc1.createOffer(offerOptions);
-	  desc_pc1.sdp = desc_pc1.sdp.replaceAll('0.0.0.0','192.168.40.34');
-	  desc_pc1.sdp = desc_pc1.sdp.replaceAll('127.0.0.1','192.168.40.34');
+	  //desc_pc1.sdp = desc_pc1.sdp.replaceAll('0.0.0.0','192.168.40.34');
+	  //desc_pc1.sdp = desc_pc1.sdp.replaceAll('127.0.0.1','192.168.40.34');
 	  console.log("desc_pc1 :");
 	console.log(desc_pc1);
 	await pc1.setLocalDescription(desc_pc1);
@@ -95,8 +95,8 @@ async function call() {
 	//目标 拿到源的连接描述后，给自己，并生成自己的连接描述
 	await pc2.setRemoteDescription(desc_pc1);
 	const desc_pc2 = await pc2.createAnswer();
-	  desc_pc2.sdp = desc_pc2.sdp.replaceAll('0.0.0.0','192.168.40.34');
-	  desc_pc2.sdp = desc_pc2.sdp.replaceAll('127.0.0.1','192.168.40.34');
+	  //desc_pc2.sdp = desc_pc2.sdp.replaceAll('0.0.0.0','192.168.40.34');
+	  //desc_pc2.sdp = desc_pc2.sdp.replaceAll('127.0.0.1','192.168.40.34');
 	console.log("answer desc_pc2 :");
 	console.log(desc_pc2);
 	await pc2.setLocalDescription(desc_pc2);
